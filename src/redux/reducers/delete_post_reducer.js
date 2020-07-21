@@ -1,18 +1,18 @@
-import { GET_POST_REQUEST, POST_DATA_FETCHED } from "../actions/action_types";
+import { DELETE_POST_REQUEST, POST_DELETED } from "../actions/action_types";
 
 const initial_state = {
-    post_data: [],
-    loading: false
+    delete_post_data: [],
+    loading: true
 }
 
 export default function(state = initial_state, action) {
     switch (action.type) {
-        case POST_DATA_FETCHED:
+        case POST_DELETED:
             return {
-                post_data: action.post_res,
+                delete_post_data: action.res,
                 loading: false
             }
-        case GET_POST_REQUEST:
+        case DELETE_POST_REQUEST:
             return {
                 ...state,
                 loading: true

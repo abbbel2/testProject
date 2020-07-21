@@ -60,13 +60,13 @@ export default function postForm(props) {
         </label>
       </FormCheck> */}
       <FormGroup>
-        {/* {props.loading ? (
+        {props.loading ? (
           <p>loading ...</p>
-        ) : ( */}
-        <Button block primary onClick={passData}>
-          Add
-        </Button>
-        {/* )} */}
+        ) : (
+          <Button block primary onClick={passData}>
+            Add
+          </Button>
+        )}
       </FormGroup>
     </form>
   );

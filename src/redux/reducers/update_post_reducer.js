@@ -1,18 +1,18 @@
-import { GET_POST_REQUEST, POST_DATA_FETCHED } from "../actions/action_types";
+import { UPDATE_POST_REQUEST, POST_UPDATED } from "../actions/action_types";
 
 const initial_state = {
-    post_data: [],
+    update_post_data: [],
     loading: false
 }
 
 export default function(state = initial_state, action) {
     switch (action.type) {
-        case POST_DATA_FETCHED:
+        case POST_UPDATED:
             return {
-                post_data: action.post_res,
+                update_post_data: action.res,
                 loading: false
             }
-        case GET_POST_REQUEST:
+        case UPDATE_POST_REQUEST:
             return {
                 ...state,
                 loading: true

@@ -13,16 +13,26 @@ import {
 } from "styled-form-component";
 
 export default function postForm(props) {
-  const [formData, setFormData] = useState({ title: "", body: "", userId: 1 });
+  // const [postId, setPostId] = useState(props.form_data.id);
+  // const [formData, setFormData] = useState({
+  //   title: props.form_data.title,
+  //   body: props.form_data.body,
+  //   userId: 1,
+  // });
+  const [title, setTitle] = useState(props.form_data.title);
+  const [body, setBody] = useState(props.form_data.body);
 
-  const handleAddPostFormChange = (e) => {
-    formData[e.target.name] = e.target.value;
-    setFormData(formData);
-  };
+  // const handleAddPostFormChange = (e) => {
+  //   formData[e.target.name] = e.target.value;
+  //   setFormData(formData);
+  // };
 
   const passUpdateData = (e) => {
     e.preventDefault();
-    props.handlePostUpdate(formData);
+    props.handlePostUpdate(
+      { id: props.form_data.id, title, body, userId: 1 },
+      props.form_data.id
+    );
   };
 
   return (
@@ -35,7 +45,8 @@ export default function postForm(props) {
             type="text"
             name="title"
             placeholder="Enter title"
-            onChange={handleAddPostFormChange}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </label>
         {/* <FormText muted>
@@ -50,7 +61,8 @@ export default function postForm(props) {
             rows="3"
             name="body"
             placeholder="Enter description"
-            onChange={handleAddPostFormChange}
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
           />
         </label>
       </FormGroup>
@@ -60,13 +72,13 @@ export default function postForm(props) {
         </label>
       </FormCheck> */}
       <FormGroup>
-        {/* {props.loading ? (
+        {props.loading ? (
           <p>loading ...</p>
-        ) : ( */}
-        <Button block primary onClick={passUpdateData}>
-          Add
-        </Button>
-        {/* )} */}
+        ) : (
+          <Button block primary onClick={passUpdateData}>
+            Update
+          </Button>
+        )}
       </FormGroup>
     </form>
   );
